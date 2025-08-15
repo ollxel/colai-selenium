@@ -1,0 +1,11 @@
+services:
+  - type: worker # Используем 'worker', так как боту не нужен входящий веб-трафик
+    name: telegram-selenium-bot
+    env: docker # Указываем, что среда выполнения - Docker
+    plan: free # Начните с бесплатного плана, но будьте готовы к апгрейду
+    autoDeploy: true # Автоматически разворачивать при изменениях в Git
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false # Установите значение этого ключа в UI Render
+      - key: NODE_ENV
+        value: production
